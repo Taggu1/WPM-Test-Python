@@ -41,12 +41,13 @@ def wpm_test(stdscr,wpm=0):
             key = stdscr.getkey()
         except:
             continue
-
-        if ord(key) == 27:
-            break
+        
         current_text.append(key)
+
         if key in ("KEY_BACKSPACE",'\b',"\x7f"):
             i -= 1
+        elif ord(key) == 27:
+            break
         elif key == target_text[i]:
             stdscr.addstr(0,i,key,curses.color_pair(2))
             i += 1 
